@@ -1,0 +1,37 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <h2>Available APNs</h2>
+  
+
+    {{ $country_name := .Params.country_code }}
+    {{ $networkid_mcc := .Params.networkid_mcc }}
+    {{ $networkid_mnc := .Params.networkid_mnc }}
+    {{ range .Params.apns }}
+  <table id="{{ .name }}" border=1>
+    <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Name:</td><td>{{ .name }}</td></tr>
+      <tr><td>Country name:</td><td>{{ $country_name }}</td></tr>
+      <tr><td>Value:</td><td>{{ .value }}</td></tr>
+      <tr><td>Plan Type:</td><td>{{ .plan_type }}</td></tr>
+      <tr><td>Usage Type:</td><td>{{ .usage_type }}</td></tr>
+      <tr><td>Gateway:</td><td>{{ .gateway }}</td></tr>
+      <tr><td>Username:</td><td>{{ .username }}</td></tr>
+      <tr><td>Password:</td><td>{{ .password }}</td></tr>
+      <tr><td>Authentication:</td><td>{{ .authentication }}</td></tr>
+      <tr><td><acronym title="mobile country code">MCC</acronym>:</td><td> {{ $networkid_mcc }}</td></tr>
+      <tr><td><acronym title="mobile network code">MNC</acronym>:</td><td> {{ $networkid_mnc }}</td></tr>
+      <tr><td>DNS</td><td>{{ .dns }}</td></tr>
+    </tbody>
+  </table>
+  <br>
+
+    {{ end }}
+{{ end }}
+
+
